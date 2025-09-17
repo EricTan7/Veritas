@@ -1,0 +1,69 @@
+mode: train
+lmdb: False
+lmdb_test: False
+dry_run: false
+lmdb_dir:  ''
+dataset_type: json
+dataset_json_folder: hydrafake/jsons
+SWA: False
+manualSeed: 42
+save_avg: True
+save_ckpt: True
+save_feat: False
+log_period: 200
+wandb: False
+wandb_proj: AIGCD
+wandb_dir: wandb_cache/AIGCD/
+cudnn: False
+train_dataset: [train/all.json]
+val_dataset: [val/all.json]
+test_dataset: [test/id/FaceForensics++, test/id/facevid2vid, test/id/Hallo2, test/id/StyleGAN, test/id/Midjourney, test/cm/AdobeFirefly, test/cm/Flux11Pro, test/cm/StarryAI, test/cm/MAGI, test/cm/HART, test/cm/Infinity, test/cf/starganv2, test/cf/iclight, test/cf/codeformer, test/cf/infiniteyou, test/cf/pulid, test/cf/faceadapter, test/cd/deepfacelab, test/cd/infiniteyou, test/cd/dreamina, test/cd/hailuo, test/cd/gpt4o, test/cd/FFIW]
+
+classnames: ["real face", "fake face"]
+metric_scoring: auc
+gaussian_sigma: null
+jpeg_quality: null
+
+# label settings
+label_dict:
+  # DFD
+  DFD_fake: 1
+  DFD_real: 0
+  # FF++ + FaceShifter(FF-real+FF-FH)
+  FF-SH: 1
+  FF-F2F: 1
+  FF-DF: 1
+  FF-FS: 1
+  FF-NT: 1
+  FF-FH: 1
+  FF-real: 0
+  # CelebDF
+  CelebDFv1_real: 0
+  CelebDFv1_fake: 1
+  CelebDFv2_real: 0
+  CelebDFv2_fake: 1
+  # DFDCP
+  DFDCP_Real: 0
+  DFDCP_FakeA: 1
+  DFDCP_FakeB: 1
+  # DFDC
+  DFDC_Fake: 1
+  DFDC_Real: 0
+  # DeeperForensics-1.0
+  DF_fake: 1
+  DF_real: 0
+  # UADFV
+  UADFV_Fake: 1
+  UADFV_Real: 0
+  # Roop
+  roop_Real: 0
+  roop_Fake: 1
+  # WDF
+  WildDeepfake_real: 0
+  WildDeepfake_fake: 1
+  # UniFD
+  UniFD_real: 0
+  UniFD_fake: 1
+  # GenImage
+  GenImage_real: 0
+  GenImage_fake: 1

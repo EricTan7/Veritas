@@ -1,0 +1,112 @@
+log_dir: d3
+pretrained: pretrain/clip-vit-base-patch16   # path to a pre-trained model, if using one
+model_name: d3
+model_config:
+  forward_type: 'lp'
+  transfer_type: 'lora_linear'
+  tuned_layers: [24, -1]
+  lora_config:
+    lora_layers: [mlp]
+    text_lora_layers: [mlp]
+    r: 6
+    alpha: 6
+    dropout: 0.1
+
+compression: c23  # compression-level for videos
+train_batchSize: 32   # training batch size
+test_batchSize: 256   # test batch size
+workers: 8   # number of data loading workers
+test_workers: 8
+frame_num:
+  train:
+    real: 8
+    fake: 8
+  val: 32
+  test: 32
+resolution: 224   # resolution of output image to network
+with_mask: false   # whether to include mask information in the input
+with_landmark: false   # whether to include facial landmark information in the input
+
+loss_config:
+  clip_grad: false
+
+# data augmentation
+use_data_augmentation: true  # Add this flag to enable/disable data augmentation
+balanced_sampler: True
+data_aug:
+  complex_aug: false
+  choices: ['resize_then_crop', 'random_flip', 'random_rotate','blur','brightness_contrast','colorjitter','compression']
+  flip_prob: 0.5
+  rotate_prob: 0.5
+  rotate_limit: [-10, 10]
+  blur_prob: 0.5
+  blur_limit: [3, 7]
+  brightness_prob: 0.5
+  brightness_limit: [-0.1, 0.1]
+  contrast_limit: [-0.1, 0.1]
+  quality_lower: 40
+  quality_upper: 100
+  # cutout
+  num_holes: [1, 3]
+  size_holes: [30, 50]
+  cutout_prob: 0.5
+  colorjitter_prob: 0.5
+  test_resize: "resize"   # resize
+
+mean: [0.5, 0.5, 0.5]
+std: [0.5, 0.5, 0.5]
+
+# optimizer config
+optimizer:
+  # choose between 'adam' and 'sgd'
+  type: adam
+  adam:
+    lr: 0.0002  # learning rate
+    weight_decay: 0.0005  # weight decay for regularization
+    beta1: 0.9  # beta1 for Adam optimizer
+    beta2: 0.999 # beta2 for Adam optimizer
+    eps: 0.00000001  # epsilon for Adam optimizer
+    amsgrad: false
+  adamw:
+    lr: 0.0002  # learning rate
+    weight_decay: 0.0005  # weight decay for regularization
+    beta1: 0.9  # beta1 for Adam optimizer
+    beta2: 0.999 # beta2 for Adam optimizer
+    eps: 0.00000001  # epsilon for Adam optimizer
+    amsgrad: false
+  sgd:
+    lr: 0.001  # learning rate
+    momentum: 0.9  # momentum for SGD optimizer
+    weight_decay: 0.0005  # weight decay for regularization
+  split: false
+
+# training config
+lr_scheduler:
+  type: cosine   # learning rate scheduler
+  # for cosine
+  max_epoch: 20
+  min_lr: null
+  # for step
+  lr_step: 10    # decay step (every 10 step, decay to *0.8)
+  lr_gamma: 0.8  # decay factor
+  warmup:
+    type: null
+    epoch: 1
+nEpochs: 20   # number of epochs to train for
+start_epoch: 1   # manual epoch number (useful for restarts)
+save_epoch: 1   # interval epochs for saving models
+rec_iter: 100   # interval iterations for recording
+manualSeed: 42   # manual seed for random number generation
+save_ckpt: true   # whether to save checkpoint
+save_feat: false   # whether to save features
+
+# loss function
+loss_func: cross_entropy   # loss function to use
+losstype: null
+
+# metric
+metric_scoring: auc   # metric for evaluation (auc, acc, eer, ap)
+
+# cuda
+cuda: true   # whether to use CUDA acceleration
+cudnn: true   # whether to use CuDNN for convolution operations
