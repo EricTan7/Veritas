@@ -1,6 +1,6 @@
-# Veritas: Generalizable Deepfake Detection via Pattern-Aware Reasoning
+# Veritas: Generalizable Deepfake Detection via Pattern-Aware Reasoning [ICLR 2026 Oral]
 
-**ICLR 2026 Oral** [ [Paper](https://openreview.net/pdf?id=5VXJPS1HoM) | [Data](https://www.modelscope.cn/datasets/EricTanh/HydraFake) | [Model](https://www.modelscope.cn/models/EricTanh/Veritas) ]
+[ 📄[Paper](https://openreview.net/pdf?id=5VXJPS1HoM) | 🔗[Data](https://www.modelscope.cn/datasets/EricTanh/HydraFake) | 🚀[Model](https://www.modelscope.cn/models/EricTanh/Veritas) ]
 
 
 In this work, we introduce:
@@ -8,7 +8,6 @@ In this work, we introduce:
 > 📍**HydraFake Dataset**: A deepfake detection dataset with rigorous training and evaluation protocol.
 >
 > 📍**Veritas Model**: A reasoning model achieving remarkable generalization on OOD forgeries, capable of providing transparent and human-aligned decision process.
-
 
 
 
@@ -65,6 +64,17 @@ We recommend using Veritas-Cold-Start + P-GRPO for further customization:
 - If you adopt our P-GRPO, the only thing you should prepare is the binary labels of your data. Arrange them similar to our `pgrpo_8k.json`.
 - We also encourage the development of (1) novel GRPO-style algorithm, e.g., involving grounded reward design to deliver more precise cross-modal signals, and (2) collaborative framework with small vision models, which can be exciting furture works.
 
+
+## 🔎 Inference on single image
+We recommend using `vLLM` for model deployment:
+```bash
+sh self_scripts/deploy/deploy_model.sh /path/to/your/model
+```
+Inference on a single image:
+```bash
+python self_scripts/infer/infer_vllm_single.py \
+--image_path /path/to/your/image
+```
 
 
 ## ⌛ Test your model on HydraFake Dataset
@@ -161,17 +171,6 @@ python DeepfakeBench/training/test.py \
 --detector_cfg DeepfakeBench/training/config/detector/effort.yaml \   
 --dataset_cfg DeepfakeBench/training/config/dataset/hydrafake.yaml \
 --weights_path /path/to/your/model
-```
-
-## Deployment
-We recommend using `vLLM` for model deployment:
-```bash
-sh self_scripts/deploy/deploy_model.sh /path/to/your/model
-```
-Inference on a single image:
-```bash
-python self_scripts/infer/infer_vllm_single.py \
---image_path /path/to/your/image
 ```
 
 
