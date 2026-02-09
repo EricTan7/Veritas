@@ -1,6 +1,6 @@
 # Veritas: Generalizable Deepfake Detection via Pattern-Aware Reasoning [ICLR 2026 Oral]
 
-[ 📄[Paper](https://openreview.net/pdf?id=5VXJPS1HoM) | 🔗[Data](https://www.modelscope.cn/datasets/EricTanh/HydraFake) | 🚀[Model](https://www.modelscope.cn/models/EricTanh/Veritas) ]
+[ 📄[Paper](https://arxiv.org/pdf/2508.21048) | 🔗[Data](https://www.modelscope.cn/datasets/EricTanh/HydraFake) | 🚀[Model](https://www.modelscope.cn/models/EricTanh/Veritas) ]
 
 
 In this work, we introduce:
