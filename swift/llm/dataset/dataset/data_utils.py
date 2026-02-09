@@ -25,5 +25,10 @@ DATASET_FACTORY = {
     "cd_dreamina": "hydrafake/jsons/test/cd/dreamina.json",
     "cd_hailuo": "hydrafake/jsons/test/cd/hailuo.json",
     "cd_gpt4o": "hydrafake/jsons/test/cd/gpt4o.json",
-    "cd_FFIW": "hydrafake/jsons/test/cd/FFIW.json"
+    "cd_FFIW": "hydrafake/jsons/test/cd/FFIW.json",
+
+    ## train
+    "sft_36k": "hydrafake/jsons/train/sft_36k.json",
+    "mipo_3k": "hydrafake/jsons/train/mipo_3k.json",
+    "pgrpo_8k": "hydrafake/jsons/train/pgrpo_8k.json"
 }

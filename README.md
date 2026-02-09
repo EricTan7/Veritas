@@ -1,8 +1,7 @@
 # Veritas: Generalizable Deepfake Detection via Pattern-Aware Reasoning
 
-[Hao Tan](https://scholar.google.com/citations?hl=zh-CN&user=gPEjNFcAAAAJ), [Jun Lan](https://scholar.google.com/citations?user=nB_ntVkAAAAJ&hl=zh-CN&oi=ao), [Zichang Tan](https://scholar.google.com/citations?user=s29CDY8AAAAJ&hl=zh-CN&oi=ao), [Ajian Liu](https://scholar.google.com/citations?user=isWtY64AAAAJ&hl=zh-CN&oi=ao), [Chuanbiao Song](https://scholar.google.com/citations?user=el17bJoAAAAJ&hl=zh-CN&oi=ao), [Senyuan Shi](https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&gmla=AH8HC4wQcWIFe0I2YTTgVx2ilBGZ6grGxjRYpFBecuoTSEVx9lR9HOLtUHRx8GC4TxUcdIuLtQy5-4fmCU8o0c78HB6KsI0&user=AT___f4AAAAJ), [Huijia Zhu](https://openreview.net/profile?id=~Huijia_Zhu1), [Weiqiang Wang](https://scholar.google.com/citations?hl=zh-CN&user=yZ5iffAAAAAJ&view_op=list_works&sortby=pubdate), [Jun Wan](http://www.cbsr.ia.ac.cn/users/jwan/), [Zhen Lei](http://www.cbsr.ia.ac.cn/users/zlei/)
+**ICLR 2026 Oral** [ [Paper](https://openreview.net/pdf?id=5VXJPS1HoM) | [Data](https://www.modelscope.cn/datasets/EricTanh/HydraFake) | [Model](https://www.modelscope.cn/models/EricTanh/Veritas) ]
 
-MAIS, Institute of Automation, Chinese Academy of Sciences & Ant Group
 
 In this work, we introduce:
 
@@ -10,19 +9,15 @@ In this work, we introduce:
 >
 > 📍**Veritas Model**: A reasoning model achieving remarkable generalization on OOD forgeries, capable of providing transparent and human-aligned decision process.
 
-The dataset, model and code will be released here.
 
-
-## 📨 Abstract
-
-Deepfake detection remains a formidable challenge due to the complex and evolving nature of fake content in real-world scenarios. However, existing academic benchmarks suffer from **severe discrepancies from industrial practice**, typically featuring homogeneous training sources and low-quality testing images, which hinders the practical deployments of current detectors.
-To mitigate this gap, we introduce **HydraFake**, a dataset that simulates real-world challenges with hierarchical generalization testing. Specifically, HydraFake involves diversified deepfake techniques and in-the-wild forgeries, along with rigorous training and evaluation protocol, covering unseen model architectures, emerging forgery techniques and novel data domains.
-Building on this resource, we propose **Veritas**, a multi-modal large language model (MLLM) based deepfake detector. Different from vanilla chain-of-thought (CoT), we introduce ***pattern-aware reasoning*** that involves critical reasoning patterns such as "planning" and "self-reflection'' to emulate human forensic process. We further propose a two-stage training pipeline to seamlessly internalize such deepfake reasoning capacities into current MLLMs. Experiments on HydraFake dataset reveal that although previous detectors show great generalization on cross-model scenarios, they fall short on unseen forgeries and data domains. Our Veritas achieves significant gains across different OOD scenarios, and is capable of delivering *transparent* and *faithful* detection outputs.
 
 
 ## News
+- 🔥 `2026.2.6` The [**training data**](https://www.modelscope.cn/datasets/EricTanh/HydraFake/tree/master/jsons/train) is released. [**Veritas**](https://www.modelscope.cn/models/EricTanh/Veritas) and [**Veritas-Cold-Start**](https://www.modelscope.cn/models/EricTanh/Veritas-Cold-Start) are both released. We recommend using Veritas-Cold-Start to customize your own detector (see below for more details).
+- 🔥 `2026.2.6` Veritas is selected as ICLR 2026 **Oral**.
+- 🔥 `2026.1.26` Veritas has been accepted to **ICLR 2026**.
 - 🔥 `2025.9.17` We release the inference code for MLLMs and small vision models.
-- 🔥 `2025.9.17` We release the [HydraFake](https://docs.google.com/forms/d/e/1FAIpQLSf0uMg4thR4YcsNwpRqdWtc4K4z-txy24ileQPaUQzRIuMDYg/viewform?usp=header) dataset (train/val/test). Please fill the form to get access.
+- 🔥 `2025.9.17` We release the [HydraFake](https://www.modelscope.cn/datasets/EricTanh/HydraFake) dataset (train/val/test).
 
 ## Installation
 ```bash
@@ -32,6 +27,44 @@ conda activate veritas
 # Install the dependencies
 pip install -e .
 ```
+
+
+## 🔥 Training
+Download training data [here](https://www.modelscope.cn/datasets/EricTanh/HydraFake/tree/master/jsons/train), including `sft_36k.json`, `mipo_3k.json`, `pgrpo_8k.json`.
+
+### 1. Cold-start (SFT)
+```bash
+sh self_scripts/train/train_sft.sh sft sft_36k
+```
+
+### 2. Cold-start (MiPO)
+```bash
+sh self_scripts/train/train_mipo.sh mipo mipo_3k
+```
+
+
+### 3. P-GRPO
+
+1.Deploy reward model. Download reward model [here](https://huggingface.co/CodeGoat24/UnifiedReward-qwen-3b), and replace the path in `swift/plugin/prm.py` and `self_scripts/deploy/deploy_reward_model.sh`.
+
+> Note: the choice of reward model is **flexible**. More powerful models may lead to better performance, e.g., UnifiedReward-qwen-7B, Qwen3-VL-8B or UnifiedReward-2.0-qwen3vl-8B.
+```bash
+sh self_scripts/deploy/deploy_reward_model.sh
+```
+
+2.P-GRPO training.
+```bash
+sh self_scripts/train/train_pgrpo.sh pgrpo pgrpo_8k
+```
+
+
+## 🚀 Customize your own detector
+
+We recommend using Veritas-Cold-Start + P-GRPO for further customization:
+- Veritas is fine-tuned on in-domain datasets, i.e., the latest generative model is SD-XL. As mentioned in our paper, for practical usage, you can further fine-tune [Veritas-Cold-Start](https://www.modelscope.cn/models/EricTanh/Veritas-Cold-Start) on your own collected data. 
+- If you adopt our P-GRPO, the only thing you should prepare is the binary labels of your data. Arrange them similar to our `pgrpo_8k.json`.
+- We also encourage the development of (1) novel GRPO-style algorithm, e.g., involving grounded reward design to deliver more precise cross-modal signals, and (2) collaborative framework with small vision models, which can be exciting furture works.
+
 
 
 ## ⌛ Test your model on HydraFake Dataset

@@ -1259,3 +1259,11 @@ for dataset_name, dataset_path in DATASET_FACTORY.items():
             dataset_name=dataset_name,
             preprocess_func=CustomPreprocessor_Reason(),
         ))
+    
+for dataset_name, dataset_path in DATASET_FACTORY.items():
+    register_dataset(
+        DatasetMeta(
+            dataset_path=dataset_path,
+            dataset_name=dataset_name+"_rl",
+            preprocess_func=CustomPreprocessor_Reason_RL(),
+        ))

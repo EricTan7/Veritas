@@ -1,5 +1,5 @@
-export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7,8,9,10,11
-export NPROC_PER_NODE=8
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5
+export NPROC_PER_NODE=6
 export USE_AUG=false
 
 RUN_NAME=$1
@@ -16,7 +16,7 @@ swift rlhf \
     --num_train_epochs 2 \
     --per_device_train_batch_size 8 \
     --per_device_eval_batch_size 8 \
-    --gradient_accumulation_steps 1 \
+    --gradient_accumulation_steps 2 \
     --use_vllm true \
     --vllm_device auto \
     --vllm_max_model_len 8192 \

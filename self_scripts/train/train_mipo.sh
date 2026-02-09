@@ -17,8 +17,8 @@ swift rlhf \
     --gradient_accumulation_steps 4 \
     --train_type lora \
     --freeze_vit false \
-    --lora_rank 128 \
-    --lora_alpha 256 \
+    --lora_rank 64 \
+    --lora_alpha 128 \
     --torch_dtype bfloat16 \
     --learning_rate 5e-5 \
     --weight_decay 0.01 \
