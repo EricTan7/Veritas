@@ -12,11 +12,13 @@ In this work, we introduce:
 
 
 ## News
+
+- 🔥 `2026.2.10` We release our new work 🚀**VideoVeritas** for AI-generated video detection. See [here](https://github.com/EricTan7/VideoVeritas) for more details. [ [Paper](https://arxiv.org/pdf/2602.08828) | [Data](https://www.modelscope.cn/datasets/EricTanh/MintVid) | [Code](https://github.com/EricTan7/VideoVeritas) ]
 - 🔥 `2026.2.6` The [**training data**](https://www.modelscope.cn/datasets/EricTanh/HydraFake/tree/master/jsons/train) is released. [**Veritas**](https://www.modelscope.cn/models/EricTanh/Veritas) and [**Veritas-Cold-Start**](https://www.modelscope.cn/models/EricTanh/Veritas-Cold-Start) are both released. We recommend using Veritas-Cold-Start to customize your own detector (see below for more details).
 - 🔥 `2026.2.6` Veritas is selected as ICLR 2026 **Oral**.
 - 🔥 `2026.1.26` Veritas has been accepted to **ICLR 2026**.
 - 🔥 `2025.9.17` We release the inference code for MLLMs and small vision models.
-- 🔥 `2025.9.17` We release the [HydraFake](https://www.modelscope.cn/datasets/EricTanh/HydraFake) dataset (train/val/test).
+- 🔥 `2025.9.17` We release the [**HydraFake**](https://www.modelscope.cn/datasets/EricTanh/HydraFake) dataset (train/val/test).
 
 ## Installation
 ```bash
