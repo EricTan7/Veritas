@@ -13,7 +13,7 @@ In this work, we introduce:
 
 ## News
 
-- 🔥 `2026.2.10` We release our new work 🚀**VideoVeritas** for AI-generated video detection. See [here](https://github.com/EricTan7/VideoVeritas) for more details. [ [Paper](https://arxiv.org/pdf/2602.08828) | [Data](https://www.modelscope.cn/datasets/EricTanh/MintVid) | [Code](https://github.com/EricTan7/VideoVeritas) ]
+- 🔥 `2026.2.10` We release our new work 🚀[**VideoVeritas**](https://github.com/EricTan7/VideoVeritas) for **AI-generated video detection**🔥🔥🔥! Dataset and Model are released [ [**Paper**](https://arxiv.org/pdf/2602.08828) | [**Data**](https://www.modelscope.cn/datasets/EricTanh/MintVid) | [**Model**](https://www.modelscope.cn/models/EricTanh/VideoVeritas) ]
 - 🔥 `2026.2.6` The [**training data**](https://www.modelscope.cn/datasets/EricTanh/HydraFake/tree/master/jsons/train) is released. [**Veritas**](https://www.modelscope.cn/models/EricTanh/Veritas) and [**Veritas-Cold-Start**](https://www.modelscope.cn/models/EricTanh/Veritas-Cold-Start) are both released. We recommend using Veritas-Cold-Start to customize your own detector (see below for more details).
 - 🔥 `2026.2.6` Veritas is selected as ICLR 2026 **Oral**.
 - 🔥 `2026.1.26` Veritas has been accepted to **ICLR 2026**.
@@ -218,11 +218,11 @@ HydraFake contains 52K images in total for evaluation, with 14K in-domain testin
 ## Citation
 If you find our work useful, please cite our paper:
 ```
-@article{tan2025veritas,
+@inproceedings{tan2025veritas,
   title={Veritas: Generalizable Deepfake Detection via Pattern-Aware Reasoning},
   author={Tan, Hao and Lan, Jun and Tan, Zichang and Liu, Ajian and Song, Chuanbiao and Shi, Senyuan and Zhu, Huijia and Wang, Weiqiang and Wan, Jun and Lei, Zhen},
-  journal={arXiv preprint arXiv:2508.21048},
-  year={2025}
+  booktitle={International Conference on Learning Representations},
+  year={2026}
 }
 ```
 
