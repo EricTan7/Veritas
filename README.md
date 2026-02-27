@@ -230,4 +230,5 @@ If you find our work useful, please cite our paper:
 This repo is released under the [Apache 2.0 License](https://github.com/EricTan7/Veritas/blob/main/LICENSE).
 
 ## Acknowledgements
+
 This repo benefits from [ms-swift](https://github.com/modelscope/ms-swift) and [DeepfakeBench](https://github.com/SCLBD/DeepfakeBench). Thanks for their great works!
