@@ -2,23 +2,24 @@
 
 [ 📄[**Paper**](https://arxiv.org/pdf/2508.21048) | 🔗[**Data**](https://www.modelscope.cn/datasets/EricTanh/HydraFake) | 🚀[**Model**](https://www.modelscope.cn/models/EricTanh/Veritas) ]
 
-
-In this work, we introduce:
-
-> 📍**HydraFake Dataset**: A deepfake detection dataset with rigorous training and evaluation protocol.
->
-> 📍**Veritas Model**: A reasoning model achieving remarkable generalization on OOD forgeries, capable of providing transparent and human-aligned decision process.
-
-
-
 ## News
 
+- 🔥 `2026.7.30` We release our new work 🚀🚀🚀[**Veritas++**](https://github.com/EricTan7/VeritasPP) for **AI-generated image detection**🔥🔥🔥! This is an extended work of Veritas, which targets at general image detection. Code and Model are released [ [**Paper**](https://arxiv.org/abs/2607.27113) | [**Model**](https://www.modelscope.cn/models/EricTanh/VeritasPP) ]
 - 🔥 `2026.2.10` We release our new work 🚀[**VideoVeritas**](https://github.com/EricTan7/VideoVeritas) for **AI-generated video detection**🔥🔥🔥! Dataset and Model are released [ [**Paper**](https://arxiv.org/pdf/2602.08828) | [**Data**](https://www.modelscope.cn/datasets/EricTanh/MintVid) | [**Model**](https://www.modelscope.cn/models/EricTanh/VideoVeritas) ]
 - 🔥 `2026.2.6` The [**training data**](https://www.modelscope.cn/datasets/EricTanh/HydraFake/tree/master/jsons/train) is released. [**Veritas**](https://www.modelscope.cn/models/EricTanh/Veritas) and [**Veritas-Cold-Start**](https://www.modelscope.cn/models/EricTanh/Veritas-Cold-Start) are both released. We recommend using Veritas-Cold-Start to customize your own detector (see below for more details).
 - 🔥 `2026.2.6` Veritas is selected as ICLR 2026 **Oral**.
 - 🔥 `2026.1.26` Veritas has been accepted to **ICLR 2026**.
 - 🔥 `2025.9.17` We release the inference code for MLLMs and small vision models.
 - 🔥 `2025.9.17` We release the [**HydraFake**](https://www.modelscope.cn/datasets/EricTanh/HydraFake) dataset (train/val/test).
+
+
+
+
+In this work, we introduce:
+
+> 📍**HydraFake Dataset**: A deepfake detection dataset with rigorous training and evaluation protocol.
+>
+> 📍**Veritas Model**: A reasoning model achieving remarkable generalization on OOD forgeries, capable of providing transparent and human-aligned decision process.
 
 ## Installation
 ```bash
